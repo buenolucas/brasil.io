@@ -140,8 +140,8 @@ def document_detail(request, document):
     elif is_person:
         companies_data = (
             Socio.objects.filter(nome_socio=unaccent(obj.name))
-            .distinct("cnpj", "razao_social")
-            .order_by("razao_social")
+            .distinct("cnpj")
+            .order_by("cnpj")
         )
         # TODO: filter by CPF also
         applications_data = Candidatos.objects.filter(cpf_candidato=obj.document)
